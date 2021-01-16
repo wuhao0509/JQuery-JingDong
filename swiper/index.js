@@ -1,3 +1,4 @@
+// jQuery不加px会自动补全
 // 构造函数：创建轮播图对象
 function Slider(opt, wrap) {
   this.wrap = wrap;
@@ -15,12 +16,17 @@ function Slider(opt, wrap) {
   this.autoTime = opt.autoTime || 5000;
   this.isAuto = opt.isAuto || opt.isAuto == undefined ? true : opt.isAuto;
   this.nowIndex = 0;
+  this.isAnimate = false; //加锁，false表示当前没有进行动画
+  this.timer = null; //定时器，设置自动轮播
 
   // 初始化轮播图结构、样式、行为
   this.init = function () {
     this.createDom();
     this.initStyle();
     this.bindEvent();
+    if (this.isAuto) {
+      this.autoChange();
+    }
   };
 }
 
@@ -42,6 +48,11 @@ Slider.prototype.createDom = function () {
     $("<span></span>").appendTo(spotDiv);
   }
 
+  if (this.type == "animate") {
+    $('<li class="my-swiper-item"></li>')
+      .append($(this.list[0]).clone())
+      .appendTo(sliderContent);
+  }
   sliderWrapper
     .append(sliderContent)
     .append(leftBtn)
@@ -65,6 +76,10 @@ Slider.prototype.initStyle = function () {
   //淡入淡出效果
   if (this.type == "fade") {
     $(".my-swiper-item", this.wrap).hide().eq(this.nowIndex).show();
+  } else if (this.type == "animate") {
+    $(".my-swiper-list", this.wrap).css({
+      width: this.width * (this.listLength + 1),
+    });
   }
   //设置小圆点样式
   $(".my-swiper-spots>span", this.wrap).eq(this.nowIndex).addClass("active");
@@ -73,7 +88,17 @@ Slider.prototype.initStyle = function () {
 Slider.prototype.bindEvent = function () {
   var self = this;
   $(".my-swiper-lbtn", this.wrap).on("click", function () {
+    if (self.isAnimate) {
+      // 此时isAnimate为true，表示当前轮播图有动画
+      return false;
+    }
+    self.isAnimate = true;
     if (self.nowIndex == 0) {
+      if (self.type == "animate") {
+        $(".my-swiper-list", self.wrap).css({
+          left: -self.width * self.listLength,
+        });
+      }
       self.nowIndex = self.listLength - 1;
     } else {
       self.nowIndex--;
@@ -81,26 +106,92 @@ Slider.prototype.bindEvent = function () {
     self.change();
   });
 
-  $(".my-swiper-rbtn", this.wrap).on('click',function () {
+  $(".my-swiper-rbtn", this.wrap).on("click", function () {
+    if (self.isAnimate) {
+      // 此时isAnimate为true，表示当前轮播图有动画
+      return false;
+    }
+    // 将锁打开，直到动画完成之后结束
+    self.isAnimate = true;
     // 如果当前图片的索引值为最后一张图片的索引值  则点击右侧按钮的时候显示第一张图片 索引值为0
-    if (self.nowIndex == self.listLength - 1) {
+    if (self.type == "fade" && self.nowIndex == self.listLength - 1) {
       self.nowIndex = 0;
+    } else if (self.type == "animate" && self.nowIndex == self.listLength) {
+      // 当图片运动到最后一张时，让.my-swiper-list瞬间变化到第一张图片的位置
+      $(".my-swiper-list", this.wrap).css({
+        left: 0,
+      });
+      self.nowIndex = 1;
     } else {
       self.nowIndex++;
     }
+    self.change();
+  });
+
+  // 鼠标移到轮播图上，轮播图停止，移开，轮播图继续
+  $(".my-swiper-wrapper", this.wrap)
+    .mouseenter(function () {
+      clearInterval(self.timer);
+    })
+    .mouseleave(function () {
+      if (self.isAuto) {
+        self.autoChange();
+      }
+    });
+
+  //实现小圆点鼠标移入就切换的效果
+  $(".my-swiper-spots > span", this.wrap).mouseenter(function () {
+    if (self.isAnimate) {
+      return false;
+    }
+    self.isAnimate = true;
+    // 用jQuery的index方法获取小圆点的索引值
+    self.nowIndex = $(this).index();
     self.change();
   });
 };
 
 // 样式切换
 Slider.prototype.change = function () {
-     // 如果是淡入淡出的动画 则为所有的轮播内容添加动画效果 上一张图片淡出  当前图片淡入
-     if (this.type == 'fade') {
-        $('.my-swiper-item', this.wrap).fadeOut().eq(this.nowIndex).fadeIn()
-    }
-    // 切换小圆点
-    $('.my-swiper-spots > span', this.wrap).removeClass('active').eq(this.nowIndex).addClass('active')
+  var self = this;
+  // 如果是淡入淡出的动画 则为所有的轮播内容添加动画效果 上一张图片淡出  当前图片淡入
+  if (this.type == "fade") {
+    $(".my-swiper-item", this.wrap)
+      .fadeOut()
+      .eq(this.nowIndex)
+      .fadeIn(
+        // 运动结束将所打开
+        function () {
+          self.isAnimate = false;
+        }
+      );
+  } else if (this.type == "animate") {
+    $(".my-swiper-list", this.wrap).animate(
+      {
+        left: -this.width * this.nowIndex,
+      },
+      function () {
+        // 运动结束将所打开
+        self.isAnimate = false;
+      }
+    );
+  }
+  // 切换小圆点
+  // 当nowIndex == listLength 代表的是当前图片是最后一张图片，此时应该让第一个小圆点显示样式
+  $(".my-swiper-spots > span", this.wrap)
+    .removeClass("active")
+    .eq(this.nowIndex % this.listLength)
+    .addClass("active");
 };
+
+// 自动轮播
+Slider.prototype.autoChange = function () {
+  var self = this;
+  this.timer = setInterval(function () {
+    $(".my-swiper-rbtn", self.wrap).click();
+  }, this.autoTime);
+};
+
 // 添加实例方法
 $.fn.extend({
   swiper: function (options) {
