@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        .item {
+            width: 100%;
+            height: 100%;
+        }
+
+        .item1 {
+            background-color: aqua;
+        }
+
+        .item2 {
+            background-color: salmon;
+        }
+
+        .item3 {
+            background-color: seagreen;
+        }
+
+        .item4 {
+            background-color: seashell;
+        }
+
+        /* .demo {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+        } */
+    </style>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <!-- 京东首页轮播图模板，相同的地方封装到方法中，不同的地方拿出来作为参数传递
+        1. 内容不同，可能是一张或多张图片或dom元素，统一处理成dom元素列表 list
+        2. 轮播图大小不同 width height
+        3. 动画效果不同 type
+        4. 是否显示左右按钮 showChangeBtn
+        5. 动画自动轮播时间 autoTime
+        6. 是否显示小圆点 showSpotBtn
+        7. 是否自动轮播   isAuto
+    -->
+
+    <div class="wrapper">
+        <div class="img-list">
+            <div class="item item1">item1</div>
+            <div class="item item2">item2</div>
+            <div class="item item3">item3</div>
+        </div>
+    </div>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        $('.wrapper').swiper({
+            list: $('.img-list > .item'),
+            width: 500,
+            height: 400,
+            type: 'fade',
+            showChangeBtn: true,
+            autoTime: 3000,
+            showSpotBtn: true,
+            isAuto: true
+        })
+    </script>
+</body>
+
+</html>
