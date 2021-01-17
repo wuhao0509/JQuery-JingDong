@@ -1,0 +1,104 @@
+.shortcut-w {
+    color: #999;
+}
+.shortcut-w a {
+    color: #999;
+}
+
+.shortcut-w .position {
+    float: left;
+}
+.shortcut-w .nav {
+    float: right;
+}
+.shortcut-w .nav li {
+    float: left;
+    position: relative;
+}
+
+.shortcut-w .nav li.spacer {
+    width: 1px;
+    height: 10px;
+    background-color: #999;
+    /* margin-top: 10px; */
+    margin: 11px 5px 0;
+}
+.shortcut-w .nav li .dt {
+    padding-left: 7px;
+    padding-right: 7px;
+    border: 1px solid transparent;
+    border-top: none;
+    position: relative;
+    z-index: 10;
+}
+.shortcut-w .nav li a:hover {
+    color: red;
+}
+.shortcut-w .nav li:hover .dt.dt-icon {
+    background-color: #fff;
+    border-left-color: #eee;
+    border-right-color: #eee;
+}
+.shortcut-w .my-dropdown {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #eee;
+    line-height: 24px;
+    top: 30px;
+    display: none;
+    z-index: 9;
+}
+.shortcut-w .my-dropdown dl {
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+}
+.shortcut-w .my-dropdown dd {
+    float: left;
+    white-space: nowrap;
+}
+.shortcut-w .nav .my-dropdown.my-jd {
+    /* left: 0; */
+    width: 280px;
+} 
+.shortcut-w .nav .my-dropdown.my-jd dd {
+    width: 126px;
+   
+}
+.shortcut-w .nav li:hover .dt {
+    border-bottom-color: #fff;
+}
+.shortcut-w .nav li:hover .my-dropdown {
+    display: block;
+}
+.shortcut-w .nav .my-dropdown.my-company {
+    width: 140px;
+}
+.shortcut-w .nav .my-dropdown.my-company dd {
+    width: 56px;
+}
+.shortcut-w .nav .my-dropdown dt {
+    font-weight: 700;
+}
+.shortcut-w .nav .my-dropdown.serve {
+    width: 170px;
+}
+.shortcut-w .nav .my-dropdown.serve dd  {
+    width: 70px;
+}
+
+.shortcut-w .nav .my-dropdown.app {
+    width: 1188px;
+    padding: 15px 0;
+    right: -84px;
+}
+.shortcut-w .nav .my-dropdown.app dl {
+    float: left;
+    width: 255px;
+    border-bottom: none;
+    border-right: 1px solid #ccc;
+    padding-top: 0px;
+}
+.shortcut-w .nav .my-dropdown.app dl dd {
+    width: 85px;
+}

@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+}
+body {
+    font-size: 12px;
+}
+.shortcut {
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid #eee;
+    background-color: #e3e4e5;
+}
+
+.header {
+    height: 140px;
+    border-bottom: 1px solid #eee;
+}
+.fs {
+    height: 480px;
+    border-bottom: 1px solid #eee;
+}
+
+.seckill {
+    height: 260px;
+}
+
+.w {
+    width: 1190px;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: 'iconfont';  /* project id 1568466 */
+    src: url('http://at.alicdn.com/t/font_1568466_tgtcrlj6ln.eot');
+    src: url('http://at.alicdn.com/t/font_1568466_tgtcrlj6ln.eot?#iefix') format('embedded-opentype'),
+    url('http://at.alicdn.com/t/font_1568466_tgtcrlj6ln.woff2') format('woff2'),
+    url('http://at.alicdn.com/t/font_1568466_tgtcrlj6ln.woff') format('woff'),
+    url('http://at.alicdn.com/t/font_1568466_tgtcrlj6ln.ttf') format('truetype'),
+    url('http://at.alicdn.com/t/font_1568466_tgtcrlj6ln.svg#iconfont') format('svg');
+  }
+
+  .iconfont {
+      font-style: normal;
+      font-family: iconfont;
+  }

@@ -1,0 +1,137 @@
+.header-w {
+    /* overflow: hidden; */
+    position: relative;
+    height: 100%;
+}
+.header-w .logo {
+    width: 190px;
+    height: 120px;
+    position: absolute;
+    top: 10px;
+    /* margin-top: 10px; */
+}
+.header-w .logo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+}
+.header-w .logo a.logo-title {
+    background-image: url(http://misc.360buyimg.com/mtd/pc/index_2019/1.0.0/assets/sprite/header/sprite.png);
+}
+.header-w .logo a.logo-bg {
+    display: none;
+    background-image: url(http://img1.360buyimg.com/da/jfs/t1/31918/19/6335/274370/5c90a8beEefd9bfb9/e24970e34ce77262.gif?v=0.9038533722214948);
+}
+/* .header-w .logo:hover a.logo-bg {
+    display: block;
+} */
+.header-w .search {
+    position: absolute;
+    left: 260px;
+    top: 25px;
+    width: 546px;
+    height: 32px;
+    border: 2px solid #e2231a;
+    background: #fff;
+    /* font-size: 0; */
+}
+.header-w .search #search-inp {
+    left: 0;
+    padding: 2px 44px 2px 17px;
+    width: 425px;
+    height: 26px;
+    border: 1px solid transparent;
+    line-height: 26px;
+    font-size: 12px;
+    position: absolute;
+    outline: none;
+}
+.header-w .search #search-btn {
+    border-radius: 0;
+    right: 0;
+    width: 58px;
+    height: 32px;
+    line-height: 32px;
+    border: none;
+    background-color: #e1251b;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    position: absolute;
+    outline: none;
+}
+
+.header-w .search .settleup {
+    width: 130px;
+    height: 34px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 34px;
+    position: absolute;
+    right: -150px;
+    top: -1px;
+    /* z-index: 21; */
+    border: 1px solid #e3e4e5;
+    color: #e1251b;
+}
+.header-w .search .settleup a{
+    color: #e1251b;
+}
+.header-w .search .settleup .settleup-content {
+    position: relative;
+    display: inline-block;
+}
+.header-w .search .settleup .iconfont {
+    margin-right: 10px;
+}
+.header-w .search .settleup .shopping-count {
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    padding: 1px 3px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #fff;
+    background-color: #e1251b;
+    border-radius: 7px;
+
+}
+.header-w .hotwords {
+    position: absolute;
+    left: 260px;
+    top: 65px;
+    width: 550px;
+    height: 20px;
+    line-height: 20px;
+}
+.header-w .hotwords a {
+    margin-right: 10px;
+    color: #999;
+}
+.header-w a.red{
+    color: #e1251b !important;
+    font-weight: 700;
+}
+.header-w .navitems {
+    position: absolute;
+    left: 203px;
+    bottom: 0;
+    height: 40px;
+    padding-top: 20px;
+}
+
+.header-w .navitems li {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    margin: 0 11px;
+}
+.header-w .navitems li a  {
+    color: #333;
+}
+.header-w .navitems li a:hover {
+    color: red;
+}
