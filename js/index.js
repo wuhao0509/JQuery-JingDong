@@ -3,3 +3,4 @@
 // 这就是jQuery实现模块化开发的方法
 // load中的路径是相对于项目的html文件的
 $(".shortcut").load("./shortcut/index.html");
+$(".header").load("./header/index.html");

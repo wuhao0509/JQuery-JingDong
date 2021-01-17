@@ -6,6 +6,7 @@
 }
 body {
     font-size: 12px;
+    background-color: #f4f4f4;
 }
 .shortcut {
     height: 30px;
@@ -17,6 +18,7 @@ body {
 .header {
     height: 140px;
     border-bottom: 1px solid #eee;
+    background-color: #fff;
 }
 .fs {
     height: 480px;
