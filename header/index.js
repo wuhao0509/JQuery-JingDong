@@ -38,3 +38,72 @@ var placeholdersData = ['小饼干', '仔仔面', '商务小布鞋']
 setInterval(function () {
     $('#search-inp').attr('placeholder', placeholdersData[Math.floor(Math.random() * 3)])
 }, 2000)
+
+$('#search-inp').on('input',function(){
+    var val = $(this).val();
+    if(val){
+        $.ajax({
+            type:'get',
+            url:'https://suggest.taobao.com/sug',
+             
+        })
+    }
+})
+
+
+
+// 一般搜索的接口都是用jsonp
+
+    // 渲染搜索框列表  data是列表数据
+    window.renderSearchList = function (data) {
+        data = data.result;
+        var str = '';
+        for (var i = 0; i < data.length; i++) {
+            str += `<li>
+        <a href="#">${data[i][0]}</a>
+    </li>`
+        }
+        $('.search-list').html(str).show()
+    }
+    // 数据请求的防抖处理
+    var timer = null;
+    // 当搜索框输入数据的时候 展示搜索列表  需要获取搜索列表数据
+    $('#search-inp').on('input', function () {
+        var val = $(this).val();
+        clearTimeout(timer);
+        if (val) {
+            // 防抖  防止每次按下键盘的时候都去获取数据
+            timer = setTimeout(function () {
+                getData(val);
+            }, 500)
+        }
+        // 如果鼠标聚焦在搜索框内  判断搜索框里面是否含有数据 如果含有 则获取列表数据并显示列表
+    }).focus(function () {
+        var val = $(this).val();
+        if (val) {
+            getData(val)
+        }
+    })
+    // 获取搜索列表数据  val是关键词
+    function getData(val) {
+        $.ajax({
+            type: 'get',
+            url: 'https://suggest.taobao.com/sug',
+            // https://suggest.taobao.com/sug?code=utf-8&q=x&callback=jsonp533&k=1&area=c2c&bucketid=18
+            data: {
+                code: 'utf-8',
+                q: val,
+                callback: 'renderSearchList'
+            },
+            dataType: 'jsonp'
+        })
+    }
+    // 鼠标移出搜索区域则列表消失
+    var mouseleaveTimer = null;
+    $('.search-box').mouseleave(function () {
+        mouseleaveTimer = setTimeout(function () {
+            $('.search-list').hide()
+        }, 500)
+    }).mouseenter(function () {
+        clearTimeout(mouseleaveTimer)
+    })

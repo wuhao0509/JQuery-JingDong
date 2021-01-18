@@ -27,8 +27,6 @@
 /* .header-w .logo:hover a.logo-bg {
     display: block;
 } */
-
-
 .header-w .search {
     position: absolute;
     left: 260px;
@@ -104,7 +102,7 @@
     position: absolute;
     left: 260px;
     top: 65px;
-    width: 565px;
+    width: 550px;
     height: 20px;
     line-height: 20px;
 }
@@ -136,4 +134,25 @@
 }
 .header-w .navitems li a:hover {
     color: red;
+}
+.search-list {
+    position: absolute;
+    background-color: #fff;
+    border: 1  px solid #eee;
+    width: 488px;
+    top: 34px;
+    z-index: 100;
+    display: none;
+}
+.header-w .search-list li {
+    padding: 0 20px;
+    line-height: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+.header-w .search-list li a {
+    color: #666;
+}
+.header-w .search-list li:hover {
+    background-color: #e3e4e5;
 }
