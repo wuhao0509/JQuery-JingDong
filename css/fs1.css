@@ -1,0 +1,71 @@
+.fs-1 .fs-menu {
+    margin-top: 10px;
+    height: 470px;
+    padding: 10px 0;
+    background-color: #fff;
+    font-size: 14px;
+}
+.fs-1 .fs-menu li {
+    height: 25px;
+    line-height: 25px;
+    padding-left: 18px;
+}
+.fs-1 .fs-menu li a {
+    font-size: 14px;
+    color: #333;
+}
+.fs-1 .fs-menu li.menu-item-on {
+    background-color: #d9d9d9;
+}
+.fs-1 .menu-content {
+    width: 998px;
+    border: 1px solid #f7f7f7;
+    background-color: #fff;
+    position: absolute;
+    left: 190px;
+    top: 10px;
+    min-height: 468px;
+    padding: 20px 0 10px;
+    box-sizing: border-box;
+    display: none;
+    /* z-index: 100; */
+}
+.fs-1 .menu-content .tabs-nav {
+    padding-left: 20px;
+    height: 24px;
+}
+.fs-w .fs-1 .menu-content .tabs-nav a {
+    /* float: left; */
+    display: inline-block;
+    margin-right: 10px;
+    padding: 0 10px;
+    height: 24px;
+    background-color: #333;
+    line-height: 24px;
+    color: #fff;
+}
+.fs-1 .menu-content .cate-details {
+    padding: 10px 0 0 20px;
+}
+.fs-1 .menu-content .cate-details .cate-item dt {
+    width: 70px;
+    text-align: right;
+    font-weight: 700;
+    white-space: nowrap;
+    float: left;
+}
+.fs-menu .menu-content .cate-details .cate-item {
+    line-height: 16px;
+}
+.fs-1 .menu-content .cate-details .cate-item dd{
+    overflow: hidden;
+}
+.fs-1 .menu-content .cate-details .cate-item a {
+    white-space: nowrap;
+    color: #333;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    margin: 3px 0;
+    padding: 0 7px;
+}

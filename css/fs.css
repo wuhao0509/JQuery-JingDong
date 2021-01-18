@@ -1,0 +1,20 @@
+.fs-w {
+    height: 100%;
+}
+.fs-w .fs-1{
+    width: 190px;
+    height: 100%;
+    position: relative;
+    float: left;
+    margin-right: 10px;
+}
+
+.fs-w .fs-2 {
+    width: 790px;
+    height: 100%;
+    float: left;
+}
+.fs-w .fs-3 {
+    width: 190px;
+    float: right;
+}

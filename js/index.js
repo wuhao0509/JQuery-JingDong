@@ -4,3 +4,4 @@
 // load中的路径是相对于项目的html文件的
 $(".shortcut").load("./shortcut/index.html");
 $(".header").load("./header/index.html");
+$('.fs').load('./fs/index.html');
